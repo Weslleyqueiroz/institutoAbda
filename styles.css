@@ -1,24 +1,557 @@
+/* ========================
+   usando fonte do google
+   ======================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap');
+
+
+   /* zera tudo pra não dar problema no layout */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+:root {
+    --abda-blue:        #003366;
+    --abda-blue-dark:   #002244;
+    --abda-blue-mid:    #004080;
+    --abda-red:         #e30613;
+    --abda-red-hover:   #c0040f;
+    --abda-gold:        #c9a84c;
+    --abda-light:       #ffffff;
+    --abda-gray:        #f4f4f4;
+    --text-dark:        #1a1a2e;
+    --text-muted:       rgba(255, 255, 255, 0.60);
+    --text-muted-hover: rgba(255, 255, 255, 0.90);
+
+    --transition-fast:  0.2s ease;
+    --transition-base:  0.3s ease;
+
+    --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.10);
+    --shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
 body {
-    color: #EDEADE;
+    background-color: var(--abda-light);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
 }
 
-
+/* ============================================
+   NAVBAR (navegacao topo)
+   =========== ================================= */
 .navbar {
-    background-color: transparent;
+    background: var(--abda-light);
+    padding: 14px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid rgba(0, 51, 102, 0.08);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+} */
+ 
+.navbar .navbar-collapse {
+    display: flex;
+    justify-content: center;
 }
 
+.navbar-nav {
+    margin: 0 auto;
+    gap: 25px;
+}
 
-.carousel-item{
-    display: flex !important;         
-    justify-content: center;
-    align-items: center;    
-    height: 500px;          
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--abda-blue) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--abda-blue) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.82rem;
+    margin-left: 20px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color var(--transition-fast);
+}
+
+/* Underline animado */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--abda-red);
+    border-radius: 2px;
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover {
+    color: var(--abda-red) !important;
+}
+
+.nav-link:hover::after {
     width: 100%;
 }
 
-.carousel-item img{
-   margin-bottom: 200px;
-    width: 550px !important;  
-    height: auto;
+/* ============================================
+   CAROUSEL (precisaa de masi imagens)
+   ============================================ */
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    background-color: var(--abda-gray);
+    padding: 40px 20px;
+}
+
+.carousel-item img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 6px;
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   BOTÃO DOE (global)
+   ============================================ */
+.btn-doe {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--abda-red);
+    color: white !important;
+    padding: 13px 32px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.88rem;
+    border: 2px solid var(--abda-red);
+    transition:
+        background  var(--transition-fast),
+        color       var(--transition-fast),
+        box-shadow  var(--transition-fast),
+        transform   var(--transition-fast);
+} 
+
+.btn-doe:hover {
+    background: transparent;
+    color: var(--abda-red) !important;
+    box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.20);
+    transform: translateY(-2px);
+}
+
+.btn-doe:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+
+/* ============================================
+   FOOTER — CONTAINER PRINCIPAL
+   ============================================ */
+.footer {
+    background:
+        radial-gradient(ellipse at 10% 20%, rgba(0, 64, 128, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 80%, rgba(227, 6, 19, 0.08) 0%, transparent 50%),
+        linear-gradient(160deg, var(--abda-blue) 0%, var(--abda-blue-dark) 100%);
+    color: white;
+    padding: 0 0 0;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Padrão de fundo sutil (linhas diagonais) */
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 12px
+    );
+    pointer-events: none;
+}
+
+/* ===============
+    (Doe Agora)
+   ================ */
+.footer-cta {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 36px 10%;
+}
+
+.footer-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-cta-label {
     display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--abda-gold);
+    margin-bottom: 4px;
+}
+
+.footer-cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Botão doe dentro da secao de info (branco) */
+.footer-cta .btn-doe {
+    background: white;
+    color: var(--abda-red) !important;
+    border-color: white;
+    padding: 14px 36px;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+}
+
+.footer-cta .btn-doe:hover {
+    background: transparent;
+    color: white !important;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.20);
+}
+
+/* ============================================
+   FOOTER — CORPO (4 COLUNAS)
+   ============================================ */
+.footer-body {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 50px;
+    padding: 56px 10% 48px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   FOOTER — COLUNA GENÉRICA
+   ============================================ */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ============================================
+   FOOTER — COLUNA LOGO
+   ============================================ */
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none !important;
+    margin-bottom: 18px;
+}
+
+.footer-logo-link img {
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+    flex-shrink: 0;
+}
+
+.footer-logo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: white;
+    line-height: 1.2;
+}
+
+.footer-logo-name em {
+    font-style: normal;
+    color: var(--abda-gold);
+}
+
+.footer-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 280px;
+}
+
+/* Ícones sociais */
+.footer-social {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted) !important;
+    font-size: 0.88rem;
+    text-decoration: none !important;
+    transition:
+        background  var(--transition-fast),
+        color       var(--transition-fast),
+        border-color var(--transition-fast),
+        transform   var(--transition-fast);
+}
+
+.footer-social-btn:hover {
+    background: var(--abda-red);
+    color: white !important;
+    border-color: var(--abda-red);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   FOOTER — TÍTULOS DAS COLUNAS
+   ============================================ */
+.footer-heading {
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: white !important;
+    margin-bottom: 22px !important;
+    position: relative;
+    padding-bottom: 10px;
+    display: block !important;
+    width: fit-content;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--abda-red);
+    border-radius: 2px;
+    transition: width var(--transition-base);
+}
+
+.footer-col:hover .footer-heading::after {
+    width: 100%;
+}
+
+/* ============================================
+   FOOTER — LISTAS DE LINKS
+   ============================================ */
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footer-list li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 500;
+    transition:
+        color       var(--transition-fast),
+        gap         var(--transition-fast),
+        padding-left var(--transition-fast);
+}
+
+.footer-list li a i {
+    font-size: 0.65rem;
+    color: var(--abda-red);
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.footer-list li a:hover {
+    color: white;
+    padding-left: 4px;
+    gap: 10px;
+}
+
+.footer-list li a:hover i {
+    opacity: 1;
+}
+
+/* FOOTER — LISTA DE CONTATO */
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.footer-contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: rgba(227, 6, 19, 0.15);
+    border-radius: 6px;
+    color: var(--abda-red);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: background var(--transition-fast);
+}
+
+.footer-contact-list li:hover .footer-contact-icon {
+    background: var(--abda-red);
+    color: white;
+}
+
+.footer-contact-list li:hover span:last-child {
+    color: white;
+}
+
+.footer-contact-list li span:last-child {
+    transition: color var(--transition-fast);
+}
+
+/* FOOTER — BARRA INFERIOR (Copyright) */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 20px 10%;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-cnpj,
+.footer-copyright {
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.40);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.04em;
+}
+
+.footer-cnpj i,
+.footer-copyright i {
+    color: rgba(255, 255, 255, 0.30);
+}
+
+/* RESPONSIVIDADE (para quando acessar em outro dispositivo)*/
+@media (max-width: 1024px) {
+    .footer-body {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+    }
+
+    .footer-cta {
+        padding: 28px 6%;
+    }
+
+    .footer-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-cta-headline {
+        font-size: 1.3rem;
+    }
+
+    .footer-body {
+        grid-template-columns: 1fr;
+        padding: 40px 6% 36px;
+        gap: 36px;
+    }
+
+    .footer-bottom {
+        padding: 18px 6%;
+    }
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+
+    .footer-list li a:hover {
+        padding-left: 0;
+    }
 }
